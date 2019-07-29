@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ch_name: MyString
+  status_id: false
+  purpose: MyString
+  workspace: one
+
+two:
+  ch_name: MyString
+  status_id: false
+  purpose: MyString
+  workspace: two

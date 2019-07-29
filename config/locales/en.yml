@@ -1,0 +1,112 @@
+en:
+ railchat: "Chat Application"
+ signin: "Sign In"
+ signup: "Sign Up"
+ back: "Back"
+ logout: "logout"
+ login: "Login"
+ email: "Email"
+ password: "Password"
+ cpassword: "Confirm Password"
+ cancel: "Cancel"
+ welcome-page: "Welcome to ChatApp"
+ emailnecessary: "Email address necessary"
+ passwordnecessary: "Password necessary"
+ emailpasswordness: "Email and password necessary"
+ unknown: "Unknown User"
+ cmmchatteam1: "Created by CMM Chat Team1"
+ page: "Page not found."
+ page404: "We’re sorry but it appears that we can’t find the page you were looking for. Usually this occurs because of a page that previously existed was removed or you’ve mistyped the address."
+ go: "Go Back"
+ change-reject: "The change you wanted was rejected."
+ page422: "Maybe you tried to change something you didn't have access to."
+ internalerror: "Internal server error."
+ page500: "Something went wrong. Our technical team have been notified of the issue and we are looking into it. Please try again shortly."
+ views:
+  pagination:
+     first: "First"
+     last: "Last"
+     next: "Next"
+     previous: "Previous"
+ users:
+   new:
+     username: "User Name"
+     enteremail: "Enter Your Email"
+     enterpassword: "Enter Your Password"
+   edit:
+     update-profile: "Update Your Profile"
+     update: "Update"
+     cancel: "Cancel"
+ workspaces:
+   workspacename: "Workspace name"
+   new:
+     enter: "Enter Your Workspace Name"
+     createworkspace: "Create A Workspace"
+     continue: "Create"
+     alertmsg: "Do you want to create?"
+     ifhaveworkspace: "If you have workspaces"
+     chooseworkspace: "Choose Workspace"
+   show:
+     chatapp: "Chat App"
+     setting: "Workspace Setting"
+     editworkspace: "Edit Workspace"
+     channels: "Channels"
+     channelsetting: "Channel Setting"
+     addchannel: "Add Channel"
+     favourite: "Favourite Message"
+     thread: "Threads"
+     invitefri: "Invite Friends"
+     delete: "Delete"
+   edit:
+     editworkspace: "Edit Your Workspace"
+     updating: "Update Workspace"
+ channels:
+   new:
+     createchannel: "Create a Channel"
+     save: "Save"
+     error: "error"
+     errormsg: "prohibited this user from being saved:"
+   show:
+     setting: "Setting"
+     editchannel: "Edit Channel"
+     addmember: "Add Member"
+     leavechannel: "Leave this channel"
+     remove: "Remove"
+     send: "Send"
+     reply: "Reply"
+     thread: "Threads"
+     send: "Send"
+     close: "Close"
+     delete: "Delete"
+   edit:
+     editchannel: "Editting Channel"
+     updatechannel: "Update Channel"
+ invite:
+   index:
+     username: "Friends"
+     invitation: "Invite your friends..."
+     uninvite: "Uninvite"
+     invite: "Invite"
+ userwork:
+   index:
+     username: "Friends"
+     invitation: "Invite your friends"
+ activerecord:
+   models:
+     channel: "Channel"
+     workspace: "Workspace"
+     user: "User"
+   attributes:
+     channel:
+       channel_name: "Channel name"
+       Channel_Name: "Channel name"
+       purpose: "Purpose"
+       Purpose: "Purpose"
+       Public?: "Public?"
+     workspace:
+       workspace_name: "Workspace name"
+     user:
+       name: "Name"
+       email: "Email"
+       password: "Password"
+       password_confirmation: "Confirm Password"

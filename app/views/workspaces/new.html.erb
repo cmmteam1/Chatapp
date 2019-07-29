@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html {
+  box-sizing: border-box;
+}
+
+body{
+  background-color:  rgb(180, 180, 170);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 0 8px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #dd4466;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #666;
+}
+
+.row{
+    padding-left: 500px;
+    margin-top: 130px;
+}
+//dropdown
+ .dropbtn {
+      background-color: green;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 150px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #345;
+      padding: 2px 5px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #66f}
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color:  #dd4466;
+    }
+</style>
+</head>
+<body>
+<% def msg(status) return "#{status}" end %>
+<div class="row" style="">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h4 style="text-align: center; color:  #dd4466;" ><%= t 'workspaces.new.createworkspace' %></h4><br>
+         <%= form_for @workspace do |f| %>
+      <%= form_group_for f, :workspace_name, label: false  do %>
+        <div class="input-group">
+         <!--  <span class="input-group-addon"><span class="fa fa-user fa-lg fa-fw"></span></span> -->
+          <%= f.text_field :workspace_name, class: 'form-control', placeholder: t('workspaces.new.enter') %>
+        </div>
+      <% end %>  
+      <br><br>                
+        <p><%= f.submit(t('workspaces.new.continue'), :class => "button", data: {:confirm => msg(t('workspaces.new.alertmsg')), :disable_with => 'Creating'}) %></p>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 style="text-align: center;" class="text-white"><%= t 'workspaces.new.ifhaveworkspace' %> : &nbsp 
+   <div class="dropdown">
+       <button class="dropbtn"><%=  t('workspaces.new.chooseworkspace') %></button>
+       <div class="dropdown-content">
+       <a><%= render partial: 'workspace', collection: @workspacelist %></a>
+      </div>
+      </div>
+</h2>
+<footer class="text-white" style="margin-top: 80px; padding-left: 500px;"><%= t 'cmmchatteam1' %></footer>
+<% end %>
+</body>
+</html>
+
+

@@ -1,0 +1,112 @@
+ja:
+ railchat: "チャットアプリ"
+ signin: "サインイン"
+ back: "バック"
+ logout: "ログアウト"
+ email: "メール"
+ password: "パスワード"
+ cpassword: "パスワードを認証する"
+ login: "ログイン"
+ signup: "登録する"
+ cancel: "キャンセル"
+ welcome-page: "ChatAppへようこそ"
+ emailnessary: "メールアドレスが必要です"
+ passwordnessary: "パスワードが必要です"
+ emailpasswordness: "メールアドレスとパスワードが必要"
+ unknown: "不明なユーザー"
+ cmmchatteam1: "CMMチャットチーム1による作成"
+ page: "ページが見つかりません。"
+ page404: "申し訳ありませんが、探しているページが見つからないようです。通常、これは以前に存在していたページが削除されたか、アドレスの入力を間違えたために発生します。"
+ go: "戻る"
+ change-reject: "あなたが望む変更は拒否されました。"
+ page422: "アクセスできないものを変更しようとしたのかもしれません。"
+ internalerror: "内部サーバーエラー。"
+ page500: "何か問題がありました。当社の技術チームはこの問題について通知を受けており、調査中です。しばらくしてからもう一度お試しください。"
+ views:
+  pagination:
+     first: "最初"
+     last: "最終"
+     next: "次"
+     previous: "前"
+ users:
+   new:
+     username: "ユーザー名"
+     enteremail: "メールアドレスを入力"
+     enterpassword: "パスワードを入力してください"
+   edit:
+     update-profile: "あなたのプロフィールを更新する"
+     update: "アップデイト"
+     cancel: "キャンセル"
+ workspaces:
+   workspacename: "ワークスペース名"
+   new:
+     enter: "ワークスペース名を入力してください"
+     createworkspace: "ワークスペースを作成する"
+     continue: "作成する"
+     alertmsg: "作成しますか？"
+     ifhaveworkspace: "ワークスペースがある場合"
+     chooseworkspace: "ワークスペースを選択"
+   show:
+     chatapp: "チャットアプリ"
+     setting: "ワークスペース 設定"
+     editworkspace: "ワークスペースを編集"
+     channels: "チャンネル"
+     channelsetting: "チャンネル設定"
+     addchannel: "チャンネルを追加"
+     favourite: "お気に入りのメッセージ"
+     thread: "スレッド"
+     invitefri: "友達を招待"
+     delete: "削除する"
+   edit:
+     editworkspace: "ワークスペースを編集する"
+     updating: "ワークスペースの更新"
+ channels:
+   new:
+     createchannel: "チャンネルを作成する"
+     save: "保存する"
+     error: "エラー"
+     errormsg: "により、このユーザーは保存されませんでした。"
+   show:
+     setting: "設定"
+     editchannel: "チャンネルを編集"
+     addmember: "メンバーを追加"
+     leavechannel: "このチャンネルを離れる"
+     remove: "削除する"
+     send: "送る"
+     reply: "応答"
+     thread: "スレッド"
+     send: "送る"
+     close: "閉じる"
+     delete: "デリート"
+   edit:
+     editchannel: "編集チャンネル"
+     updatechannel: "チャンネルを更新"
+ invite:
+   index:
+     username: "友達"
+     invitation: "友達を招待する..."
+     uninvite: "招かない"
+     invite: "招待する"
+ userwork:
+   index:
+    name: "友達"
+    invitation: "友達を招待する..."
+ activerecord:
+   models:
+     channel: "Channel"
+     workspace: "Workspace"
+     user: "User"
+   attributes:
+     channel:
+       channel_name: "チャンネル名"
+       Channel_Name: "チャンネル名"
+       purpose: "目的"
+       Purpose: "目的"
+       Public?: "パブリック?"
+     workspace:
+       workspace_name: "ワークスペース名"
+     user:
+       name: "名前"
+       email: "メール"
+       password: "パスワード"
+       password_confirmation: "パスワードを認証する"

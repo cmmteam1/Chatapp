@@ -1,0 +1,23 @@
+<div class="card" style="width:400px;">
+    <div class="card-body" style="">
+              <%= form_with(model: workspace, local: true) do |form| %>
+          <% if workspace.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(workspace.errors.count, "error") %> prohibited this workspace from being saved:</h2>
+              <ul>
+              <% workspace.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="field">
+            <%= form.label :workspace_name ,class:"text-info"%>
+            <%= form.text_field :workspace_name %>
+          </div><br><br>
+              <%= form.submit t('workspaces.edit.updating'), class: "btn btn-info"%>
+              <%= link_to  t('back'),workspace_path(@workspace), class: "btn btn-secondary" %>
+          <% end %>
+ 
+    </div>
+  </div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+    body{
+            background-color: rgb(180, 180, 180); 
+}
+      .signup{
+        padding: 70px;
+      }
+    </style>
+</head>
+<body>
+   <div class="container signup">
+       <div class="row">
+           <div class="col-sm-6 offset-3">
+           <div class="card">
+               <div class="card card-header">
+                   <h5 class="text-center text-danger"><%= t 'signup' %></h5>
+               </div>
+               <div class="card card-body">
+               <%= form_for @user, url:{action: "create"} do |f| %>
+                 <%= f.label :name %>
+                  <%= form_group_for f, :name,label: false do %>
+                   <div class="input-group">
+                       <%= f.text_field:name, class: 'form-control', placeholder: t('users.new.username') %>
+                   </div>
+                 <% end %>
+                 <%= f.label :email %>
+                  <%= form_group_for f, :email,label: false do %>
+                   <div class="input-group">
+                       <%= f.text_field:email, class: 'form-control', placeholder: t('users.new.enteremail') %>
+                   </div>
+                 <% end %>
+                 <%= f.label :password %>
+                  <%= form_group_for f, :password,label: false do %>
+                   <div class="input-group">
+                       <%= f.password_field:password, class: 'form-control', placeholder: t('users.new.enterpassword') %>
+                   </div>
+                 <% end %>
+                 <%= f.label :password_confirmation %>
+                  <%= form_group_for f, :password_confirmation, label: false do %>
+                   <div class="input-group">
+              <%= f.password_field:password_confirmation, class: 'form-control', placeholder: t('cpassword') %>
+                   </div>
+                 <% end %>
+                  <div class="form-group">
+                    <%= f.submit t('signup'), class:"btn btn-secondary" %>
+                    <a style="padding-right: 25px;"><%= link_to t('cancel'), root_path, class: "btn btn-secondary" %></a>
+                   </div>
+              <% end %>
+               </div>
+           </div>
+           </div>
+       </div>
+   </div>
+</body>
+</html>

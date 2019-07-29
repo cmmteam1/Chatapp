@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+    body {
+/*  background: #999;*/
+  /*padding: 10px;*/
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+#image{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 80px;
+  background:url("./chat2.png"); no-repeat center fixed;
+  background-size: cover;   
+}
+
+form {
+  position: relative;
+  width: 250px;
+  margin: 0 auto;
+  background: rgba(130,130,130,.3);
+  padding: 20px 22px;
+  border: 1px solid;
+  border-top-color: rgba(255,255,255,.4);
+  border-left-color: rgba(255,255,255,.4);
+  border-bottom-color: rgba(60,60,60,.4);
+  border-right-color: rgba(60,60,60,.4);
+}
+
+.input, form button {
+  width: 212px;
+  border: 1px solid;
+  border-bottom-color: rgba(255,255,255,.5);
+  border-right-color: rgba(60,60,60,.35);
+  border-top-color: rgba(60,60,60,.35);
+  border-left-color: rgba(80,80,80,.45);
+  background-color: rgba(0,0,0,.2);
+  background-repeat: no-repeat;
+  padding: 8px 24px 8px 10px;
+  font: bold .875em/1.25em "Open Sans Condensed", sans-serif;
+  letter-spacing: .075em;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  margin-bottom: 19px;
+}
+
+.app{
+      color: #76448A;
+      text-align: center;
+      padding-top: 10px;
+}
+
+form input:focus { background-color: rgba(0,0,0,.4); }
+</style>
+</head>
+<body>
+    <div id="image">
+       <h1 class="app"><%= t ('welcome-page') %></h1>
+    </div>
+    <h2 style="padding: 60px;"></h2>
+    <%= form_for(:session, url: login_path) do |f| %>
+    <h3 class="text-white" style="text-align: center;"><%= t 'signin' %></h3>
+     <form action="">
+       <label for="" class="text-white"><%= t 'email' %></label>
+       <%= f.text_field :email, class: 'input' %>
+       <label for="" class="text-white"><%= t 'password' %></label>
+        <%= f.password_field :password,  class: 'input' %>
+        <%= f.submit t ('login'), class: "" %>
+     </form>
+    <% end %>
+</body>
+</html>

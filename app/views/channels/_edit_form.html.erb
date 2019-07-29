@@ -1,0 +1,21 @@
+<%= form_with(model: channel, local: true) do |form| %>
+  <% if channel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(channel.errors.count, "error") %> <%= t 'channels.new.errormsg' %></h2>
+      <ul>
+      <% channel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+   
+    <%= form.label :Channel_Name %>&nbsp&nbsp&nbsp<br>
+    <%= form.text_field :ch_name %><br><br>
+    <%= form.label :Purpose %><br>
+    <%= form.text_field :purpose %><br><br>
+     
+    <%= form.submit t('channels.edit.updatechannel'), class: "btn btn-primary" %> 
+  </div>
+  <% end %>

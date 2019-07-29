@@ -1,0 +1,11 @@
+<div class="alert alert-warning msg" style="width: 600px;">
+  <%= message.user.name %><br>
+    <%= message.content %> 
+    <div class="text-right">
+        <small><%= message.created_at %></small>
+    </div>
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= message.id %>">
+        <i class="fas fa-comment 2x"><%= t('channels.show.reply') %></i>
+  </button>
+  <button type="button" class="btn btn-light" style="padding-right: 10px;"><%= link_to t('channels.show.remove'), message_path(message), method: :delete %></button>
+</div>

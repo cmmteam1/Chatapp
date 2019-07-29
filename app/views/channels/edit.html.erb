@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title></title>
+    <style type="text/css">
+    	 .container{
+        margin-left: 500px;
+        padding-top: 50px;
+       }
+       h1{
+        color: #2980B9;
+       }
+    </style>
+  </head>
+<body class="b">
+  <br>
+  <br>
+  <%= render 'layouts/sidenav' %>
+  <div class="container">
+  	   <h1><%= t 'channels.edit.editchannel' %></h1>
+       <div class="card" style="width:400px">
+          <div class="card-body">
+          <%= render 'edit_form', channel: @channel %>
+          </div>
+        </div>
+  </div>
+</body>
+</html>

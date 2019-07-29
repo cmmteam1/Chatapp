@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+  <html>
+  <head>
+    <title></title>
+    <style type="text/css">
+       .container{
+        margin-left: 450px;
+        padding-top: 30px;
+       }
+       h1{
+        text-align: center;
+        margin-left: 100px;
+        padding-top: 20px;
+        color: #2980B9;
+       }
+    </style>
+  </head>
+<body>
+    <%= render 'layouts/sidenav' %>
+  <h1><%= t 'channels.new.createchannel' %></h1>
+
+<div class="container">
+  <div class="card" style="width:400px">
+    <div class="card-body">
+       <%= form_with(model: @channel, local: true) do |form| %>
+
+      <div class="form-group has-feedback">
+         <%= form.label :channel_name %><br>
+         <%= form.text_field :ch_name,name:"ch_name" %><br>
+         <%= form.label :purpose %><br>
+         <%= form.text_field :purpose, name:"purpose" %><br>
+         <%= form.check_box :status_id ,name:"status_id"%>&nbsp
+         <%= form.label :Public?%>
+         <%= form.hidden_field :workspace_id,name:"workspace_id", value: "#{@workspace.id}"%>
+      </div>
+         <% if @channel.errors.any? %>
+            <div id="errorExplanation" style="color: red " >
+              <h2 style="color: red "><%= pluralize(@channel.errors.count, t('channels.new.error')) %><%= t 'channels.new.errormsg' %></h2>
+            <ul>
+              <% @channel.errors.full_messages.each do |msg| %>
+               <li><%= msg %></li>
+              <% end %>
+            </ul>
+            </div>
+         <% end %>    
+
+          <%= form.submit t('channels.new.save') , class: "btn btn-primary"%>
+          <%= link_to  t('back'),workspace_path(@workspace), class: "btn btn-secondary" %>
+       <% end %>
+    </div>
+  </div>
+  </div>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>           
+  </div>
+</body>
+</html>

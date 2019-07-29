@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+      font-size: 15px;
+    }
+
+    .profile{
+      float: right;
+    }
+
+  </style>
+</head>
+
+<% provide(:title, @workspace) %>
+<body>
+  <div class="sidenav">
+    <!--  <h4 class="text-white" style="float: left"><%= t 'workspaces.show.chatapp' %></h4> -->
+    <h4 style="" class="text-light"><%= @workspace.workspace_name %></h4>
+    <p class="text-white profile"><i class="fas fa-user fa-1x" style="text-align: center;"><%=link_to current_user.name, edit_user_path(current_user) %></i></p>
+    <button class="dropdown-btn text-white" style=""><%= t 'workspaces.show.setting' %>
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <%= link_to t('workspaces.show.editworkspace'), edit_workspace_path%> 
+      <%= link_to t('workspaces.show.delete'), @workspace, method: :delete %>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item"><%= t 'workspaces.show.channels' %></li>
+      <% @channel.each do |channels| %>
+      <% if channels.status_id == true %>
+      <li class="list-item text-white bg-secondary"><%= link_to channels.ch_name, channel_path(channels) %></li>
+      <% end %>
+      <% end %>
+    </ul>
+    <a class="text-white"><%= link_to t('workspaces.show.addchannel'), new_channel_path(:id => @workspace.id) %></a>
+    <a class="text-white"><%= link_to t('workspaces.show.invitefri') , workspace_userwork_index_path(@workspace) %></a>
+    <a class="text-white"><%= link_to t('logout'), logout_path%></a>
+  </div>
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html> 
