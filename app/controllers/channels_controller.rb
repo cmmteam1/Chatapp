@@ -67,8 +67,8 @@ end
   def destroy
     logger.debug "--------destroy---------"
     Channel.find(params[:id]).destroy 
-    
-    redirect_to workspace_path
+    @ws = Workspace.find(session[:current_workspace])
+    redirect_to workspace_path(@ws)
   end
 
   def current_workspace
