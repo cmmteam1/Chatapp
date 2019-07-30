@@ -3,8 +3,8 @@
               <%= form_with(model: workspace, local: true) do |form| %>
           <% if workspace.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(workspace.errors.count, "error") %> prohibited this workspace from being saved:</h2>
-              <ul>
+              <h2 class="text-danger"><%= pluralize(workspace.errors.count, t('channels.new.error')) %><%= t 'channels.new.errormsg' %></h2>
+              <ul class="text-danger">
               <% workspace.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
@@ -12,10 +12,10 @@
             </div>
           <% end %>
           <div class="field">
-            <%= form.label :workspace_name ,class:"text-info"%>
+            <%= form.label :workspace_name ,class:"text-success"%>
             <%= form.text_field :workspace_name %>
           </div><br><br>
-              <%= form.submit t('workspaces.edit.updating'), class: "btn btn-info"%>
+              <%= form.submit t('workspaces.edit.updating'), class: "btn btn-success"%>
               <%= link_to  t('back'),workspace_path(@workspace), class: "btn btn-secondary" %>
           <% end %>
  

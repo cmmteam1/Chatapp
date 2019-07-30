@@ -31,22 +31,21 @@ class WorkspacesController < ApplicationController
   logger.debug "--------show---------"
    @userworkspace =  Userwork.find_by(workspace_id: @workspace.id) 
    @workspace = Workspace.find(params[:id])
-   @channel=Channel.where(:workspace => @workspace.id)
-   session[:current_workspace]=@workspace.id
-
+   @ch=Channel.where(:workspace => @workspace.id)
+  session[:current_workspace]=@workspace.id
  end
 
   def edit
     # @workspace = Workspace.find(params[:id])
-      @workspace = Workspace.find(session[:current_workspace])
-      @ch=Channel.where(:workspace => @workspace.id)
   end
 
   def update
     logger.debug "--------update---------"
-    @workspace = Workspace.find(params[:id])
-    if @workspace.update(workspace_params)
+       @workspace = Workspace.find(params[:id])
+      if @workspace.update(workspace_params)
        @userworkspace =  Userwork.find_by(workspace_id: @workspace.id)
+       @ch=Channel.where(:workspace => @workspace.id)
+
        # @userworkspace.update_attribute(:workspace_name, @workspace.workspace_name)
        redirect_to workspace_path
       else

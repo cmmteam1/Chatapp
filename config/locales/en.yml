@@ -23,7 +23,7 @@ en:
  internalerror: "Internal server error."
  page500: "Something went wrong. Our technical team have been notified of the issue and we are looking into it. Please try again shortly."
  views:
-  pagination:
+   pagination:
      first: "First"
      last: "Last"
      next: "Next"

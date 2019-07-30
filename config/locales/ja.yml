@@ -23,7 +23,7 @@ ja:
  internalerror: "内部サーバーエラー。"
  page500: "何か問題がありました。当社の技術チームはこの問題について通知を受けており、調査中です。しばらくしてからもう一度お試しください。"
  views:
-  pagination:
+   pagination:
      first: "最初"
      last: "最終"
      next: "次"

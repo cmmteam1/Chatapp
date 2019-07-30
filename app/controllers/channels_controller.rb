@@ -4,6 +4,8 @@ class ChannelsController < ApplicationController
   logger.debug "--------index---------"
    @channel= Channel.all
    @workspace = Workspace.all
+   @workspace = Workspace.find(session[:current_workspace])
+       @ch=Channel.where(:workspace => @workspace.id)
     render action: :index
  end
 
@@ -11,8 +13,6 @@ class ChannelsController < ApplicationController
   logger.debug "--------new---------" 
   @channel= Channel.new
   @workspace = Workspace.find(session[:current_workspace])
-  @ch=Channel.where(:workspace => @workspace.id)
-  @channels=Channel.all
  end
 
   def create
@@ -20,6 +20,7 @@ class ChannelsController < ApplicationController
      @channel= Channel.new(ch_name:params[:ch_name],status_id:params[:status_id],purpose:params[:purpose],workspace_id:params[:workspace_id])
      @workspace = Workspace.find(params[:workspace_id])
      if @channel.save
+      
      @current=Channel.last
      @currentchannel=Invite.create(:user => current_user, :channel => @channel, :role => "owner")
      @currentchannel.save
@@ -30,7 +31,9 @@ class ChannelsController < ApplicationController
      redirect_to workspace_path(@workspace.id)
     else
       render 'new'
-    end
+       @workspace = Workspace.find(session[:current_workspace])
+       @ch=Channel.where(:workspace => @workspace.id)
+     end
   end
 
  def show
@@ -41,9 +44,9 @@ class ChannelsController < ApplicationController
     # @messages=Message.where(:channel => @channel.id)
     @thread=ThreadMessage.new
     @threads=ThreadMessage.where(session[:curr_message_id])
-    @workspace = Workspace.find(session[:current_workspace])
-    @ch=Channel.where(:workspace => @workspace.id)
-    # session[:channel_list]=@channel.id
+   @workspace = Workspace.find(session[:current_workspace])
+       @ch=Channel.where(:workspace => @workspace.id)
+    session[:channel_list]=@channel.id
     helpers.set_channel @channel
     helpers.set_message @message
    end
@@ -51,12 +54,14 @@ class ChannelsController < ApplicationController
 
   def edit
     # @workspace = Workspace.find(params[:id])
+     @workspace = Workspace.find(session[:current_workspace])
       @workspace = Workspace.find(session[:current_workspace])
-      @ch=Channel.where(:workspace => @workspace.id)
+       @ch=Channel.where(:workspace => @workspace.id)
   end
 
  def update
   logger.debug "--------update---------"
+  
    if @channel.update_attributes(channel_params)
      redirect_to channel_path, notice: 'Channnel was successfully update'
    else
@@ -67,8 +72,8 @@ end
   def destroy
     logger.debug "--------destroy---------"
     Channel.find(params[:id]).destroy 
-    @ws = Workspace.find(session[:current_workspace])
-    redirect_to workspace_path(@ws)
+    
+    redirect_to workspace_path
   end
 
   def current_workspace

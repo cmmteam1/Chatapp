@@ -5,19 +5,18 @@
     <title></title>
     <style type="text/css">
     	.container{
-    		margin-left: 500px;
+    		margin-left: 400px;
     		padding-top:  50px;
     	}
     	h4{
           text-align: center;
-          padding-left: 200px;
           padding-top: 30px;
           color: #2980B9;
     	}
     </style>
   </head>
 <body>
-  <%= render 'layouts/sidenav' %>
+  
 	 <h4><%= t 'workspaces.edit.editworkspace' %></h4>
     <div class="container">
     <%= render 'edit_form', workspace: @workspace %>

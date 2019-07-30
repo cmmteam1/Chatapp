@@ -24,30 +24,35 @@
                </div>
                <div class="card card-body">
                <%= form_for @user, url:{action: "create"} do |f| %>
+
                  <%= f.label :name %>
                   <%= form_group_for f, :name,label: false do %>
                    <div class="input-group">
                        <%= f.text_field:name, class: 'form-control', placeholder: t('users.new.username') %>
                    </div>
                  <% end %>
+
                  <%= f.label :email %>
                   <%= form_group_for f, :email,label: false do %>
                    <div class="input-group">
                        <%= f.text_field:email, class: 'form-control', placeholder: t('users.new.enteremail') %>
                    </div>
                  <% end %>
+
                  <%= f.label :password %>
                   <%= form_group_for f, :password,label: false do %>
                    <div class="input-group">
                        <%= f.password_field:password, class: 'form-control', placeholder: t('users.new.enterpassword') %>
                    </div>
                  <% end %>
+
                  <%= f.label :password_confirmation %>
                   <%= form_group_for f, :password_confirmation, label: false do %>
                    <div class="input-group">
-              <%= f.password_field:password_confirmation, class: 'form-control', placeholder: t('cpassword') %>
+                     <%= f.password_field:password_confirmation, class: 'form-control', placeholder: t('cpassword') %>
                    </div>
                  <% end %>
+                 
                   <div class="form-group">
                     <%= f.submit t('signup'), class:"btn btn-secondary" %>
                     <a style="padding-right: 25px;"><%= link_to t('cancel'), root_path, class: "btn btn-secondary" %></a>

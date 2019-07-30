@@ -1,97 +1,99 @@
-  <!DOCTYPE html>
-  <html>
-  <style>
-    form {
-      border: 3px solid #f1f1f1;
-    }
+<!DOCTYPE html>
+<html>
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
 
-    input[type=text], input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
 
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
 
-    button:hover {
-      opacity: 0.8;
-    }
+button:hover {
+    opacity: 0.8;
+}
 
-    .cancelbtn {
-      width: auto;
-      padding: 10px 18px;
-      background-color: #f44336;
-    }
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
 
-    .imgcontainer {
-      text-align: center;
-      margin: 24px 0 12px 0;
-    }
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
 
-    img.avatar {
-      width: 40%;
-      border-radius: 50%;
-    }
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
 
-    .container {
-      padding: 16px;
-    }
+.container {
+    padding: 16px;
+}
 
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
     span.psw {
-      float: right;
-      padding-top: 16px;
-    }
-
-    /* Change styles for span and cancel button on extra small screens */
-    @media screen and (max-width: 300px) {
-      span.psw {
        display: block;
        float: none;
-     }
-     .cancelbtn {
+    }
+    .cancelbtn {
        width: 100%;
-     }
-   }
+    }
+}
 
-   .container{
-     padding-left: 200px;
-   }
-  </style>
-  <body>
+.container{
+   padding-left: 260px;
+}
+</style>
+<body>
    <%= render 'layouts/sidenav' %>
-   <div class="container">
-    <h2 style="text-align: center;"><%= t('users.edit.update-profile') %></h2>
-
-    <%= form_for(@user) do |f| %>
-    <h3 style="text-align: center; padding-top: 10px;"><i class="fas fa-user 5x"></i><%= current_user.name%></h3>
-    <div class="container">
+<div class="container">
+<h2 style="text-align: center;"><%= t 'users.edit.update-profile' %></h2>
+     
+<%= form_for(@user) do |f| %>
+  <h3 style="text-align: center; padding-top: 10px;"><i class="fas fa-user 5x"></i><%= current_user.name%></h3>
+  <div class="container">
      <%= f.label :name %>
      <%= f.text_field :name, class: 'form-control' %>
 
      <%= f.label :email %>
-     <%= f.email_field :email, class: 'form-control' %><br>
+     <%= f.email_field :email, class: 'form-control' %>
 
-     <%= f.label :password %>
-     <%= f.password_field :password, class: 'form-control' %>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
 
-     <%= f.label :password_confirmation %>
-     <%= f.password_field :password_confirmation, class: 'form-control' %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-     <%= f.submit t('users.edit.update'), class: "btn btn-success btn-lg"%>
-     <%= link_to t('users.edit.cancel'), edit_user_path,class: "btn btn-danger btn-lg"%>
-   </div>
-   <% end %>
+    <%= f.submit t('users.edit.update'), class: "btn btn-success btn-lg"%>
+    <%= link_to t('users.edit.cancel'), workspace_path ,class: "btn btn-danger btn-lg"%>
   </div>
-  </body>
-  </html>
+  <% end %>
+</div>
+</body>
+
+<!-- Mirrored from www.w3schools.com/howto/tryit.asp?filename=tryhow_css_login_form by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Nov 2017 03:36:32 GMT -->
+</html>

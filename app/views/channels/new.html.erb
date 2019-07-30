@@ -17,7 +17,7 @@
     </style>
   </head>
 <body>
-    <%= render 'layouts/sidenav' %>
+
   <h1><%= t 'channels.new.createchannel' %></h1>
 
 <div class="container">
@@ -36,7 +36,7 @@
       </div>
          <% if @channel.errors.any? %>
             <div id="errorExplanation" style="color: red " >
-              <h2 style="color: red "><%= pluralize(@channel.errors.count, t('channels.new.error')) %><%= t 'channels.new.errormsg' %></h2>
+              <h4 style="color: red "><%= pluralize(@channel.errors.count, t('channels.new.error')) %><%= t 'channels.new.errormsg' %></h4>
             <ul>
               <% @channel.errors.full_messages.each do |msg| %>
                <li><%= msg %></li>
