@@ -16,8 +16,8 @@ class ThreadMessagesController < ApplicationController
   def destroy
     logger.info "--------destroy---------"
     ThreadMessage.find(params[:id]).destroy
-    redirect_to message_path(:message => @message_id)
-
+    @channel=Channel.find(session[:curr_channel_id])
+    redirect_to channel_path(@channel)
   end
   private
   

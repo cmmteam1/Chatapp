@@ -79,14 +79,17 @@
         </div>
       <div class="modal-body">
            <% @threads.each do |thread| %>
+           <% if thread.message_id == msg.id %>
            <%= msg.user.name %>
            <div class="alert alert-info" style="width: 400px;">
            <%= thread.replied_msg %> 
-            <% link_to "Delete", thread_message_path(msg), method: :delete %>
            <div class="text-right">
-          <small><%= thread.created_at %></small>    
-        </div>
-       </div>
+          <small><%= thread.created_at %></small>   
+          </div>
+           <div><%= link_to t('channels.show.remove'), thread_message_path(thread), method: :delete ,class:"btn btn-light" %>
+           </div> 
+          </div>
+       <% end %>
        <% end %>
       </div>
       <div class="modal-footer">
@@ -96,10 +99,12 @@
            <%= f.hidden_field :message_id, value: msg.id ,name:"message_id" %>
         </div>
            <%= f.text_area :replied_msg, name:'replied_msg', class: 'form-control' %>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('channels.show.close') %></button>
-        <%= f.submit t('channels.show.send') ,class:"btn btn-primary"%>
+        <div class="form-group">
+           <%= f.submit t('channels.show.send') ,class:"btn btn-primary"%>
+         <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('channels.show.close') %></button>
+       </div>
         <% end %>
-      </div>
+       </div>
     </div>
   </div>
 </div>

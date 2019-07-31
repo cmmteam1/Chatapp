@@ -44,7 +44,7 @@ class ChannelsController < ApplicationController
     # @messages=Message.where(:channel => @channel.id)
     @thread=ThreadMessage.new
     @threads=ThreadMessage.where(session[:curr_message_id])
-   @workspace = Workspace.find(session[:current_workspace])
+    @workspace =Workspace.find(session[:current_workspace])
        @ch=Channel.where(:workspace => @workspace.id)
     session[:channel_list]=@channel.id
     helpers.set_channel @channel
