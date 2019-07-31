@@ -1,14 +1,14 @@
 class InviteController < ApplicationController
   
   def index
-    logger.debug "--------index---------"
+    logger.info "--------index---------"
   	@users = User.where.not(id:session[:user_id])
     @workspace = Workspace.find(session[:current_workspace])
     @ch=Channel.where(:workspace => @workspace.id)
   end
 
   def update
-    logger.debug "--------update---------"
+    logger.info "--------update---------"
   	@invite_user = User.find(params[:id])
         @invite_channel = Channel.find(params[:channel_id])
         @is_invite = Invite.find_by(user: @invite_user, channel: @invite_channel, role: "member")

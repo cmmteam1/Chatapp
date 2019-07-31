@@ -1,7 +1,7 @@
 class ChannelsController < ApplicationController
  before_action :set_channel, only: [:show, :edit, :update, :destroy]
  def index
-  logger.debug "--------index---------"
+  logger.info "--------index---------"
    @channel= Channel.all
    @workspace = Workspace.all
    @workspace = Workspace.find(session[:current_workspace])
@@ -10,13 +10,13 @@ class ChannelsController < ApplicationController
  end
 
  def new
-  logger.debug "--------new---------" 
+  logger.info "--------new---------" 
   @channel= Channel.new
   @workspace = Workspace.find(session[:current_workspace])
  end
 
   def create
-     logger.debug "--------create---------"
+     logger.info "--------create---------"
      @channel= Channel.new(ch_name:params[:ch_name],status_id:params[:status_id],purpose:params[:purpose],workspace_id:params[:workspace_id])
      @workspace = Workspace.find(params[:workspace_id])
      if @channel.save
@@ -37,7 +37,7 @@ class ChannelsController < ApplicationController
   end
 
  def show
-  logger.debug "--------show---------"
+  logger.info "--------show---------"
     @channel = Channel.find(params[:id])
     @message=Message.new
     @messages=Message.all.includes(:user).where(:channel => @channel.id)
@@ -60,7 +60,7 @@ class ChannelsController < ApplicationController
   end
 
  def update
-  logger.debug "--------update---------"
+  logger.info "--------update---------"
   
    if @channel.update_attributes(channel_params)
      redirect_to channel_path, notice: 'Channnel was successfully update'
@@ -70,7 +70,7 @@ class ChannelsController < ApplicationController
 end
 
   def destroy
-    logger.debug "--------destroy---------"
+    logger.info "--------destroy---------"
     Channel.find(params[:id]).destroy 
     
     redirect_to workspace_path

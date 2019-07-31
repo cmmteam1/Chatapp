@@ -1,22 +1,23 @@
 class MessagesController < ApplicationController
 
   def index
-    logger.debug "--------index---------"
+    logger.info "--------index---------"
   	@message=Message.all
   	
   end
 
   def show
+    logger.info "--------show---------"
     @message=Message.all
   end
 
   def new
-    logger.debug "--------new---------"
+    logger.info "--------new---------"
     @message=Message.new
   end
 
   def create
-    logger.debug "--------create---------"
+    logger.info "--------create---------"
     @message = Message.new(content:params[:content],channel_id:params[:channel_id], user_id:current_user.id, star_msg:params[:star_msg],attached_file:params[:attached_file],unread_msg:params[:unread_msg])
     respond_to do |format|
       if @message.save
@@ -31,7 +32,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    logger.debug "--------destroy---------#{session[:curr_channel_id]}"
+    logger.info "--------destroy---------#{session[:curr_channel_id]}"
     Message.find(params[:id]).destroy
     @channel=Channel.find(session[:curr_channel_id])
     redirect_to channel_path(@channel)

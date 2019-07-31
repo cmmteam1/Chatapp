@@ -1,22 +1,22 @@
 class UsersController < ApplicationController
   
   def index
-    logger.debug "--------index---------"
+    logger.info "--------index---------"
   	@user = User.all
   end
 
   def show
-    logger.debug "--------show---------"
+    logger.info "--------show---------"
      @User = User.find(params[:id])
   end
 
   def new
-    logger.debug "--------new---------"
+    logger.info "--------new---------"
   	@user = User.new
   end
 
   def create
-    logger.debug "--------create---------"
+    logger.info "--------create---------"
   	#render plain: params[:user].inspect
   	  @user=User.new(user_params)
   	 if @user.save  	  
@@ -28,14 +28,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    logger.debug "--------Edit---------"
+    logger.info "--------Edit---------"
     @user = User.find(params[:id])
     @workspace = Workspace.find(session[:current_workspace])
     @ch=Channel.where(:workspace => @workspace.id)
   end
 
   def update
-    logger.debug "--------Update---------"
+    logger.info "--------Update---------"
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"

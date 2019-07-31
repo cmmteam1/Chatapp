@@ -1,13 +1,13 @@
 class UserworkController < ApplicationController
   def index
-    logger.debug "--------index---------"
+    logger.info "--------index---------"
   	 @users = User.where.not(id: current_user).order(:name).page(params[:page]).per(5)
      @workspace = Workspace.find(session[:current_workspace])
      @ch=Channel.where(:workspace => @workspace.id)
   end
 
   def update
-    logger.debug "--------update---------"
+    logger.info "--------update---------"
   	@invite_user = User.find(params[:id])
         @invite_workspace = Workspace.find(params[:workspace_id])
         @is_invite = Userwork.find_by(user: @invite_user, workspace: @invite_workspace, role: "member")
@@ -29,9 +29,10 @@ class UserworkController < ApplicationController
             redirect_to :action => 'index'
         end
   end
+
   private
-    def invite_params
+  def invite_params
       params.require(:channel).permit(:ch_name,:status_id,:purpose,:workspace_id)
-    end
+  end
 end
 

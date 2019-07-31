@@ -2,19 +2,19 @@ class WorkspacesController < ApplicationController
  before_action :set_workspace, only: [:show, :edit, :update, :destroy]
 
  def index
-  logger.debug "--------index---------"
+  logger.info "--------index---------"
    @workspace = Workspace.all
    @workspacelist = User.all.find_by(id:session[:user_id]).workspace
  end
 
  def new
-  logger.debug "--------new---------"
+  logger.info "--------new---------"
     @workspace=Workspace.new
     @workspacelist = User.all.find_by(id:session[:user_id]).workspace
  end
 
-  def create
-    logger.debug "--------create---------"
+ def create
+    logger.info "--------create---------"
     @workspace =Workspace.new(workspace_params)
    if @workspace.save
     @current=Workspace.last
@@ -25,22 +25,22 @@ class WorkspacesController < ApplicationController
    else
     render 'new'
   end
-  end
+ end
 
  def show
-  logger.debug "--------show---------"
+  logger.info "--------show---------"
    @userworkspace =  Userwork.find_by(workspace_id: @workspace.id) 
    @workspace = Workspace.find(params[:id])
    @ch=Channel.where(:workspace => @workspace.id)
   session[:current_workspace]=@workspace.id
  end
 
-  def edit
+ def edit
     # @workspace = Workspace.find(params[:id])
-  end
+ end
 
-  def update
-    logger.debug "--------update---------"
+ def update
+    logger.info "--------update---------"
        @workspace = Workspace.find(params[:id])
       if @workspace.update(workspace_params)
        @userworkspace =  Userwork.find_by(workspace_id: @workspace.id)
@@ -52,26 +52,27 @@ class WorkspacesController < ApplicationController
       flash[:danger] = "Update is not success."
       render "edit"
     end
-  end
+ end
 
  def destroy
-  logger.debug "--------delete---------"
+  logger.info "--------delete---------"
     Workspace.find(params[:id]).destroy
     redirect_to new_workspace_path
 
-end
+ end
   
-  private
+ private
 
  def set_workspace
-       @workspace = Workspace.find(params[:id])
+    @workspace = Workspace.find(params[:id])
  end
-   def workspace_params
-     params.require(:workspace).permit(:workspace_name)
-  end
 
-  def userwork_params
-    params.require(:userwork).permit(:user_id,:workspace_id,:role)
-  end
+ def workspace_params
+   params.require(:workspace).permit(:workspace_name)
+ end
+
+ def userwork_params
+   params.require(:userwork).permit(:user_id,:workspace_id,:role)
+ end
 
 end
