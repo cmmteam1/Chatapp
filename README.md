@@ -27,7 +27,7 @@ When heroku run rails db:migrate, Postgres Connection:Bad Error Solving.....
 
 1. $git init
 
-2. $git remote add origin https://github.com/your_organization_name/your_repository_name.git
+2. $git remote add origin https://github.com/cmmteam1/Chatapp
 
 3. $git add .
 
@@ -40,7 +40,7 @@ When heroku run rails db:migrate, Postgres Connection:Bad Error Solving.....
 
 1. $heroku login 
 
-2. $heroku git:remote -a your_app_name
+2. $heroku git:remote -a team1chatapp
 
 3. $git add .
 
@@ -52,8 +52,3 @@ When heroku run rails db:migrate, Postgres Connection:Bad Error Solving.....
 
 7. $heroku open
 
-When PostgreSQL Error....
-- heroku pg:info
-- 1) heroku addons:create heroku-postgresql
-- 2) heroku config --app your_app_name
-- 3) heroku run rails db:migrate
