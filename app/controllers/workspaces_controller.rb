@@ -58,7 +58,6 @@ class WorkspacesController < ApplicationController
   logger.info "--------delete---------"
     Workspace.find(params[:id]).destroy
     redirect_to new_workspace_path
-
  end
   
  private

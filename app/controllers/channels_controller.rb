@@ -54,7 +54,6 @@ class ChannelsController < ApplicationController
 
   def edit
     # @workspace = Workspace.find(params[:id])
-     @workspace = Workspace.find(session[:current_workspace])
     　@workspace = Workspace.find(session[:current_workspace])
     　@ch=Channel.where(:workspace => @workspace.id)
   end
@@ -72,8 +71,8 @@ end
   def destroy
     logger.info "--------destroy---------"
     Channel.find(params[:id]).destroy 
-    
-    redirect_to workspace_path
+    @workspace = Workspace.find(session[:current_workspace])
+    redirect_to workspace_path(@workspace)
   end
 
   def current_workspace
