@@ -24,10 +24,6 @@ class ChannelsController < ApplicationController
      @current=Channel.last
      @currentchannel=Invite.create(:user => current_user, :channel => @channel, :role => "owner")
      @currentchannel.save
-     # @channel.save
-     # @user_channel = Invite.new(:new => session[:user_id], :channel => @channel, :role => "owner")
-     # @user_channel.save
-        
      redirect_to workspace_path(@workspace.id)
     else
       render 'new'
@@ -41,7 +37,6 @@ class ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
     @message=Message.new
     @messages=Message.all.includes(:user).where(:channel => @channel.id)
-    # @messages=Message.where(:channel => @channel.id)
     @thread=ThreadMessage.new
     @threads=ThreadMessage.all
     @workspace =Workspace.find(session[:current_workspace])
@@ -53,9 +48,7 @@ class ChannelsController < ApplicationController
 
 
   def edit
-    # @workspace = Workspace.find(params[:id])
-    　@workspace = Workspace.find(session[:current_workspace])
-    　@ch=Channel.where(:workspace => @workspace.id)
+
   end
 
  def update
@@ -75,10 +68,6 @@ end
     redirect_to workspace_path(@workspace)
   end
 
-  def current_workspace
-   #@workspaces = Workspace.find(params[:id])
-  end
-  
  private
      # Use callbacks to share common setup or constraints between actions.
   def set_channel
