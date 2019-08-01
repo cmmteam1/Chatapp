@@ -13,46 +13,50 @@
 
   </style>
 </head>
+
 <% provide(:title, @workspace) %>
 <body>
   <div class="sidenav">
-       <h4 style="" class="text-light"><%= @workspace.workspace_name %></h4>
+      <h4 style="" class="text-light"><%= @workspace.workspace_name %></h4>
          <p class="text-white profile"><i class="fas fa-user fa-1x" style="text-align: center;"><%=link_to current_user.name, edit_user_path(current_user) %></i></p>
-        <button class="dropdown-btn text-white" style=""><%= t 'workspaces.show.setting' %>
-          <i class="fa fa-caret-down"></i>
-        </button>
-      <div class="dropdown-container">
-         <%= link_to t('workspaces.show.editworkspace'), edit_workspace_path(@workspace)%> 
-         <%= link_to t('workspaces.show.delete'), @workspace, method: :delete %>
-      </div>
-      <ul class="list-group">
-         <li class="list-group-item"><%= t 'workspaces.show.channels' %></li>
-          <% @ch.each do |channels| %>
-            <% if channels.status_id == true %>
-               <li class="list-item text-white bg-secondary"><%= link_to channels.ch_name, channel_path(channels) %></li>
+            <button class="dropdown-btn text-white" style=""><%= t 'workspaces.show.setting' %>
+              <i class="fas fa-cog fa-1x" style="float: right;"></i>
+            </button>
+           <div class="dropdown-container">
+             <%= link_to t('workspaces.show.editworkspace'), edit_workspace_path(@workspace)%> 
+             <i class="fa fa-trash fa-1x text-white" style="float: right; padding-top: 15px;padding-right: 15px;" aria-hidden="true"></i>
+             <%= link_to t('workspaces.show.delete'), @workspace, method: :delete %>
+           </div>
+          <ul class="list-group">
+              <li class="list-group-item"><i class="fa fa-users fa-1x" aria-hidden="true" style="float: right;"></i>
+            <%= t 'workspaces.show.channels' %></li>
+            <% @ch.each do |channels| %>
+                <% if channels.status_id == true %>
+                <li class="list-item text-white bg-secondary"><%= link_to channels.ch_name, channel_path(channels) %></li>
+                <% end %>
             <% end %>
-          <% end %>
-      </ul>
-      <a class="text-white"><%= link_to t('workspaces.show.addchannel'), new_channel_path(:id => @workspace.id) %></a>
-      <a class="text-white"><%= link_to t('workspaces.show.invitefri') , workspace_userwork_index_path(@workspace) %></a>
-      <a class="text-white"><%= link_to t('logout'), logout_path%></a>
-</div>
-
+          </ul>
+          <a class="text-white"><i class="fas fa-user-plus fa-1x" style="float: right;padding-top: 15px;"></i>
+          <%= link_to t('workspaces.show.addchannel'), new_channel_path(:id => @workspace.id) %></a>
+          <a class="text-white"><i class="far fa-address-book fa-1x" style="float: right;padding-top: 15px;"></i><%= link_to t('workspaces.show.invitefri') , workspace_userwork_index_path(@workspace) %></a>
+          <a class="text-white"><i class="fas fa-sign-out-alt fa-1x" style="float: right;padding-top: 15px;"></i><%= link_to t('logout'), logout_path%>
+          </a>
+  </div>
 <script>
   var dropdown = document.getElementsByClassName("dropdown-btn");
   var i;
 
   for (i = 0; i < dropdown.length; i++) {
-   dropdown[i].addEventListener("click", function() {
-     this.classList.toggle("active");
-     var dropdownContent = this.nextElementSibling;
-     if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } 
-    else 
-      {dropdownContent.style.display = "block";}
-  });
- }
+    dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+      } else {
+        dropdownContent.style.display = "block";
+      }
+    });
+  }
 </script>
 
 </body>
