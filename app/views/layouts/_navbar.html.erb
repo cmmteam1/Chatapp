@@ -10,11 +10,11 @@
       <li  style="float:right"><%= link_to "English", { :locale=>'en' } , :class => 'navbar-link' %>&nbsp&nbsp</li>
      <%end%>
     <% else %>
-     <% if I18n.locale == I18n.default_locale %>
+ <!--     <% if I18n.locale == I18n.default_locale %>
       <li  style="float:right"><%= link_to "Japan", { :locale=>'ja' } , :class => 'navbar-link' %>&nbsp&nbsp</li>
-     <% else %>
+     <% else %> -->
       <li  style="float:right"><%= link_to "English", { :locale=>'en' } , :class => 'navbar-link' %>&nbsp&nbsp</li>
-     <% end %>
+     <!-- <% end %> -->
      <li class="list" style="padding-left: 100px;"><%= link_to t('signup'), signup_path , :class => 'navbar-link', class: "btn btn-md btn-secondary" %></li>
   <% end %>
   </ul>

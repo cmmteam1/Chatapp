@@ -43,9 +43,9 @@ class ChannelsController < ApplicationController
     @messages=Message.all.includes(:user).where(:channel => @channel.id)
     # @messages=Message.where(:channel => @channel.id)
     @thread=ThreadMessage.new
-    @threads=ThreadMessage.where(session[:curr_message_id])
+    @threads=ThreadMessage.all
     @workspace =Workspace.find(session[:current_workspace])
-       @ch=Channel.where(:workspace => @workspace.id)
+    @ch=Channel.where(:workspace => @workspace.id)
     session[:channel_list]=@channel.id
     helpers.set_channel @channel
     helpers.set_message @message
@@ -55,8 +55,8 @@ class ChannelsController < ApplicationController
   def edit
     # @workspace = Workspace.find(params[:id])
      @workspace = Workspace.find(session[:current_workspace])
-      @workspace = Workspace.find(session[:current_workspace])
-       @ch=Channel.where(:workspace => @workspace.id)
+    　@workspace = Workspace.find(session[:current_workspace])
+    　@ch=Channel.where(:workspace => @workspace.id)
   end
 
  def update

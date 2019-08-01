@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_07_23_095358) do
   create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "ch_name"
     t.boolean "status_id"
-    t.string "purpose"
+    t.text "purpose"
     t.bigint "workspace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_07_23_095358) do
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.boolean "star_msg"
     t.string "attached_file"
     t.boolean "unread_msg"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_07_23_095358) do
   end
 
   create_table "thread_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "replied_msg"
+    t.text "replied_msg"
     t.bigint "message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

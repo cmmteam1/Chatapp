@@ -38,11 +38,6 @@ class MessagesController < ApplicationController
     redirect_to channel_path(@channel)
   end
 
-   def current_msg
-      if session[:message_id]
-        @current_msg ||= Message.find_by(id: session[:message_id])
-      end
-    end
   def message_params
     params.require(:message).permit(:content, :star_msg, :attached_file, :unread_msg, :channel_id,:user_id)
 
